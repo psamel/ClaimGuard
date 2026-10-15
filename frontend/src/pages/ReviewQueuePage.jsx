@@ -165,11 +165,11 @@ export default function ReviewQueuePage({
                   <div style={{ 
                     marginTop: '10px', 
                     padding: '8px 12px', 
-                    background: reason.severity === 'high' ? '#fef2f2' : '#f8fafc',
+                    background: reason.severity === 'high' ? 'var(--accent-burgundy-light)' : 'var(--bg-card-subtle)',
                     borderRadius: '6px',
                     fontSize: '0.8rem',
-                    color: reason.severity === 'high' ? '#991b1b' : '#475569',
-                    border: `1px solid ${reason.severity === 'high' ? '#fecaca' : '#e2e8f0'}`
+                    color: reason.severity === 'high' ? 'var(--accent-burgundy-text)' : 'var(--text-secondary)',
+                    border: `1px solid ${reason.severity === 'high' ? 'var(--accent-burgundy-border)' : 'var(--border-color)'}`
                   }}>
                     <strong>Investigation Trigger:</strong> {reason.text}
                   </div>

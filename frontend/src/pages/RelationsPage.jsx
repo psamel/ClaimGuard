@@ -104,7 +104,7 @@ export default function RelationsPage({ onSelectClaim }) {
           </div>
         </div>
 
-        <div style={{ fontSize: '0.85rem', color: '#475569' }}>
+        <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
           {activeTab === 'relation' ? (
             <div>
               <p>
@@ -113,15 +113,15 @@ export default function RelationsPage({ onSelectClaim }) {
               </p>
               <div style={{ 
                 fontFamily: 'monospace', 
-                background: '#f8fafc', 
+                background: 'var(--bg-card-subtle)', 
                 padding: '8px 12px', 
                 borderRadius: '6px', 
                 margin: '8px 0',
-                border: '1px solid #e2e8f0' 
+                border: '1px solid var(--border-color)' 
               }}>
                 R(A, B) = 1 &nbsp;iff&nbsp; (A ≠ B) and Claims A and B share at least one entity (Vehicle, Customer, Incident, Garage, Invoice).
               </div>
-              <p style={{ fontSize: '0.78rem', color: '#64748b' }}>
+              <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
                 Self-relations R(A, A) = 0 along the diagonal. The matrix M_R is symmetric because shared entities form an undirected relation.
               </p>
             </div>
@@ -132,16 +132,16 @@ export default function RelationsPage({ onSelectClaim }) {
               </p>
               <div style={{ 
                 fontFamily: 'monospace', 
-                background: '#fffbeb', 
+                background: 'var(--warning-light)', 
                 padding: '8px 12px', 
                 borderRadius: '6px', 
                 margin: '8px 0',
-                border: '1px solid #fde68a',
-                color: '#92400e'
+                border: '1px solid var(--warning-border)',
+                color: 'var(--warning-text)'
               }}>
                 W^(k)[i][j] = W^(k-1)[i][j] ∨ (W^(k-1)[i][k] ∧ W^(k-1)[k][j]) &nbsp;for k = 1, 2, ..., n
               </div>
-              <p style={{ fontSize: '0.78rem', color: '#64748b' }}>
+              <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
                 At iteration k, intermediate claim v_k is considered. Cells with 1 in W that were 0 in M_R represent indirect relationships discovered by transitive reachability.
               </p>
             </div>
@@ -152,8 +152,8 @@ export default function RelationsPage({ onSelectClaim }) {
       {/* Selected Cell Inspector Banner */}
       {selectedCell && (
         <div style={{ 
-          background: '#f0f9ff', 
-          border: '1px solid #bae6fd', 
+          background: 'var(--info-bg)', 
+          border: '1px solid var(--info-border)', 
           padding: '12px 16px', 
           borderRadius: '8px', 
           marginBottom: '20px',
@@ -164,10 +164,10 @@ export default function RelationsPage({ onSelectClaim }) {
           gap: '10px'
         }}>
           <div>
-            <div style={{ fontWeight: 700, color: '#0369a1', fontSize: '0.9rem' }}>
+            <div style={{ fontWeight: 700, color: 'var(--info-text)', fontSize: '0.9rem' }}>
               Selected Pair: ({selectedCell.idA}, {selectedCell.idB})
             </div>
-            <div style={{ fontSize: '0.82rem', color: '#334155', marginTop: '2px' }}>
+            <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', marginTop: '2px' }}>
               {selectedCell.text}
             </div>
           </div>
@@ -212,17 +212,17 @@ export default function RelationsPage({ onSelectClaim }) {
 
           <div style={{ display: 'flex', gap: '14px', fontSize: '0.78rem', alignItems: 'center' }}>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
-              <span style={{ width: '12px', height: '12px', backgroundColor: '#e0f2fe', border: '1px solid #bae6fd', borderRadius: '2px' }}></span>
+              <span style={{ width: '12px', height: '12px', backgroundColor: 'var(--matrix-cell-1-bg)', border: '1px solid var(--info-border)', borderRadius: '2px' }}></span>
               Direct Connection (1)
             </span>
             {activeTab === 'warshall' && (
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
-                <span style={{ width: '12px', height: '12px', backgroundColor: '#fef3c7', border: '1px solid #fde68a', borderRadius: '2px' }}></span>
+                <span style={{ width: '12px', height: '12px', backgroundColor: 'var(--matrix-cell-reach-bg)', border: '1px solid var(--warning-border)', borderRadius: '2px' }}></span>
                 Transitive Indirect Reachability (1)
               </span>
             )}
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
-              <span style={{ width: '12px', height: '12px', backgroundColor: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '2px' }}></span>
+              <span style={{ width: '12px', height: '12px', backgroundColor: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '2px' }}></span>
               No Connection (0)
             </span>
           </div>
@@ -232,9 +232,9 @@ export default function RelationsPage({ onSelectClaim }) {
           <table className="matrix-table">
             <thead>
               <tr>
-                <th style={{ backgroundColor: '#f1f5f9', position: 'sticky', top: 0, left: 0, zIndex: 10 }}>Claims</th>
+                <th style={{ backgroundColor: 'var(--bg-card-subtle)', position: 'sticky', top: 0, left: 0, zIndex: 10 }}>Claims</th>
                 {claimIds.map((cid) => (
-                  <th key={cid} style={{ position: 'sticky', top: 0, backgroundColor: '#f8fafc', zIndex: 5 }}>
+                  <th key={cid} style={{ position: 'sticky', top: 0, backgroundColor: 'var(--table-header-bg)', zIndex: 5 }}>
                     {cid.replace('CLM-', 'C')}
                   </th>
                 ))}
@@ -243,7 +243,7 @@ export default function RelationsPage({ onSelectClaim }) {
             <tbody>
               {claimIds.map((rowId, i) => (
                 <tr key={rowId}>
-                  <th style={{ position: 'sticky', left: 0, backgroundColor: '#f8fafc', zIndex: 5, textAlign: 'left' }}>
+                  <th style={{ position: 'sticky', left: 0, backgroundColor: 'var(--table-header-bg)', zIndex: 5, textAlign: 'left' }}>
                     {rowId}
                   </th>
                   {claimIds.map((colId, j) => {
@@ -292,7 +292,7 @@ export default function RelationsPage({ onSelectClaim }) {
               <Layers size={18} /> Indirectly Reachable Pairs Discovered by Warshall's Algorithm
             </h3>
           </div>
-          <p style={{ fontSize: '0.82rem', color: '#64748b', marginBottom: '14px' }}>
+          <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: '14px' }}>
             These pairs have M_R[i][j] = 0 (no shared entity directly) but W[i][j] = 1 (connected via a chain of intermediate claims):
           </p>
 
@@ -301,17 +301,17 @@ export default function RelationsPage({ onSelectClaim }) {
               <div 
                 key={idx}
                 style={{ 
-                  background: '#fffbeb', 
-                  border: '1px solid #fde68a', 
+                  background: 'var(--warning-light)', 
+                  border: '1px solid var(--warning-border)', 
                   padding: '12px', 
                   borderRadius: '6px',
                   fontSize: '0.82rem'
                 }}
               >
-                <div style={{ fontWeight: 700, color: '#92400e', marginBottom: '4px' }}>
+                <div style={{ fontWeight: 700, color: 'var(--warning-text)', marginBottom: '4px' }}>
                   {item.pair[0]} ⟷ {item.pair[1]}
                 </div>
-                <div style={{ color: '#475569' }}>{item.explanation}</div>
+                <div style={{ color: 'var(--text-secondary)' }}>{item.explanation}</div>
               </div>
             ))}
           </div>

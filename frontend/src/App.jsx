@@ -161,7 +161,7 @@ export default function App() {
           {loading && !claims.length ? (
             <div className="loading-box">
               <div className="spinner"></div>
-              <p>Connecting to ClaimGuard Flask backend at http://127.0.0.1:5000/api...</p>
+              <p>Connecting to ClaimGuard API...</p>
             </div>
           ) : error && !claims.length ? (
             <div className="card" style={{ maxWidth: '640px', margin: '40px auto', textAlign: 'center' }}>

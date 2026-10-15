@@ -8,6 +8,7 @@ and review status updates.
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from datetime import datetime
+import os
 
 from data import (
     get_claims,
@@ -31,9 +32,29 @@ from duplicate_rules import (
     DISCLAIMER_TEXT
 )
 
+
 app = Flask(__name__)
-# Enable CORS for local Vite dev server and preview servers
-CORS(app, resources={r"/api/*": {"origins": "*"}})
+
+# ---------------------------------------------------------------------------
+# CORS configuration
+#
+# In production (Vercel services with rewrite-based routing), all browser
+# requests to /api/* arrive as same-origin — CORS headers are never checked.
+#
+# For local development, the Vite proxy (vite.config.js) also makes /api/*
+# same-origin from the browser's perspective, so CORS is not triggered there
+# either.
+#
+# Flask-CORS is retained for the case where a developer accesses Flask
+# directly (e.g. curl / Postman / browser tab at localhost:5000).
+#
+# Set the ALLOWED_ORIGINS environment variable to a comma-separated list of
+# origins to permit.  The default covers the Vite dev server.
+# Do NOT set ALLOWED_ORIGINS in production — it is not needed.
+# ---------------------------------------------------------------------------
+_raw_origins = os.environ.get("ALLOWED_ORIGINS", "http://localhost:5173")
+_allowed_origins = [o.strip() for o in _raw_origins.split(",") if o.strip()]
+CORS(app, resources={r"/api/*": {"origins": _allowed_origins}})
 
 
 @app.route("/api/health", methods=["GET"])

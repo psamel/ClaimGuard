@@ -115,7 +115,7 @@ export default function OverviewPage({
                   <tr key={c.claim_id}>
                     <td>
                       <button 
-                        style={{ fontWeight: 600, color: '#0284c7', textDecoration: 'underline' }}
+                        style={{ fontWeight: 600, color: 'var(--primary)', textDecoration: 'underline' }}
                         onClick={() => onSelectClaim(c.claim_id)}
                       >
                         {c.claim_id}
@@ -161,20 +161,20 @@ export default function OverviewPage({
                 <Share2 size={16} /> Graph Network Summary
               </h2>
             </div>
-            <div style={{ fontSize: '0.85rem', color: '#475569', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderBottom: '1px solid #f1f5f9' }}>
+            <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderBottom: '1px solid var(--border-color)' }}>
                 <span>Connected Components:</span>
                 <strong>{stats?.connected_components_count ?? 0}</strong>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderBottom: '1px solid #f1f5f9' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderBottom: '1px solid var(--border-color)' }}>
                 <span>Largest Component Size:</span>
                 <strong>{stats?.largest_component_size ?? 0} nodes</strong>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderBottom: '1px solid #f1f5f9' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderBottom: '1px solid var(--border-color)' }}>
                 <span>Transitive Reachability:</span>
-                <span style={{ color: '#0284c7', fontWeight: 600 }}>Warshall Analyzed</span>
+                <span style={{ color: 'var(--primary)', fontWeight: 600 }}>Warshall Analyzed</span>
               </div>
-              <p style={{ fontSize: '0.78rem', color: '#64748b', marginTop: '4px' }}>
+              <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '4px' }}>
                 Each component represents an equivalence class of claims connected via shared entities.
               </p>
               <button 
@@ -190,24 +190,24 @@ export default function OverviewPage({
           {/* Duplicate Summary Card */}
           <div className="card" style={{ marginBottom: 0 }}>
             <div className="card-header">
-              <h2 className="card-title" style={{ fontSize: '0.98rem', color: '#991b1b' }}>
+              <h2 className="card-title" style={{ fontSize: '0.98rem', color: 'var(--accent-burgundy-text)' }}>
                 <CopyCheck size={16} /> Propositional Duplicate Rules
               </h2>
             </div>
-            <div style={{ fontSize: '0.85rem', color: '#475569' }}>
+            <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
               <div style={{ 
                 fontFamily: 'monospace', 
-                background: '#fef2f2', 
-                color: '#991b1b', 
+                background: 'var(--accent-burgundy-light)', 
+                color: 'var(--accent-burgundy-text)', 
                 padding: '8px', 
                 borderRadius: '6px',
-                border: '1px solid #fecaca',
+                border: '1px solid var(--accent-burgundy-border)',
                 fontSize: '0.8rem',
                 marginBottom: '10px'
               }}>
                 D(A,B) = I(A,B) ^ V(A,B) ^ B(A,B)
               </div>
-              <p style={{ fontSize: '0.8rem', color: '#64748b', marginBottom: '10px' }}>
+              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '10px' }}>
                 <strong>{duplicates?.candidate_count || 0} candidate pair(s)</strong> flagged with matching incident, vehicle, and invoice IDs.
               </p>
               <button 
@@ -228,15 +228,15 @@ export default function OverviewPage({
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.85rem' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span style={{ color: '#b45309' }}>• Pending:</span>
+                <span style={{ color: 'var(--warning)' }}>• Pending:</span>
                 <strong>{stats?.pending_reviews ?? 0} claims</strong>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span style={{ color: '#0284c7' }}>• Reviewed:</span>
+                <span style={{ color: 'var(--primary)' }}>• Reviewed:</span>
                 <strong>{stats?.reviewed_claims ?? 0} claims</strong>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span style={{ color: '#15803d' }}>• Resolved:</span>
+                <span style={{ color: 'var(--success)' }}>• Resolved:</span>
                 <strong>{stats?.resolved_claims ?? 0} claims</strong>
               </div>
               <button 

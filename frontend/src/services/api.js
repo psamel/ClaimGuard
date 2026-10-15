@@ -1,9 +1,16 @@
 /**
  * ClaimGuard API Service
  * Centralized API helper with error handling, retries, and configurable backend URL.
+ *
+ * URL resolution strategy:
+ *   1. If VITE_API_BASE_URL is set (e.g. a separate backend host), use it.
+ *   2. Otherwise use a relative '/api' path.
+ *      - In production (Vercel): /api/* is routed to the Python serverless function.
+ *      - In local dev: Vite's proxy forwards /api/* to http://127.0.0.1:5000.
  */
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:5000/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
+
 
 async function request(endpoint, options = {}) {
   const url = `${API_BASE_URL}${endpoint}`;
@@ -29,7 +36,9 @@ async function request(endpoint, options = {}) {
   } catch (err) {
     if (err.name === 'TypeError' && err.message.includes('fetch')) {
       throw new Error(
-        `Unable to reach backend at ${API_BASE_URL}. Ensure the Flask server is running on port 5000.`
+        `Unable to reach the ClaimGuard backend at ${API_BASE_URL}. ` +
+        `Locally: ensure the Flask server is running (cd backend && venv\\Scripts\\python.exe app.py). ` +
+        `In production: check the Vercel deployment logs.`
       );
     }
     throw err;

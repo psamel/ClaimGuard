@@ -73,7 +73,7 @@ export default function MathConceptsPage() {
             </p>
           </div>
         </div>
-        <p style={{ fontSize: '0.88rem', color: '#475569', lineHeight: 1.6 }}>
+        <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
           ClaimGuard demonstrates the direct real-world application of foundational discrete mathematics concepts 
           to complex relational data. Rather than relying on opaque machine learning models or probabilistic fraud scores, 
           ClaimGuard employs deterministic graph theory, binary relations, and propositional logic to deliver 
@@ -108,12 +108,12 @@ export default function MathConceptsPage() {
                   <td>
                     <span style={{ 
                       fontSize: '0.75rem', 
-                      background: '#ecfdf5', 
-                      color: '#059669', 
+                      background: 'var(--success-light)', 
+                      color: 'var(--success-text)', 
                       padding: '3px 8px', 
                       borderRadius: '12px',
                       fontWeight: 600,
-                      border: '1px solid #a7f3d0'
+                      border: '1px solid var(--success-border)'
                     }}>
                       ✓ Verified
                     </span>
@@ -130,14 +130,14 @@ export default function MathConceptsPage() {
         
         {/* Module 1 */}
         <div className="card" style={{ marginBottom: 0 }}>
-          <h3 className="card-title" style={{ fontSize: '0.98rem', color: '#0284c7' }}>
+          <h3 className="card-title" style={{ fontSize: '0.98rem', color: 'var(--primary)' }}>
             Module 1: Propositional Logic
           </h3>
-          <div style={{ fontSize: '0.83rem', color: '#475569', marginTop: '10px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <div style={{ fontSize: '0.83rem', color: 'var(--text-secondary)', marginTop: '10px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <p>
               <strong>Formulation:</strong> A candidate duplicate alert is formed by the conjunction of three atomic propositions:
             </p>
-            <div style={{ fontFamily: 'monospace', background: '#f8fafc', padding: '8px', borderRadius: '4px', border: '1px solid #e2e8f0' }}>
+            <div style={{ fontFamily: 'monospace', background: 'var(--bg-card-subtle)', padding: '8px', borderRadius: '4px', border: '1px solid var(--border-color)' }}>
               D(A,B) = I(A,B) ∧ V(A,B) ∧ B(A,B)
             </div>
             <p>
@@ -149,14 +149,14 @@ export default function MathConceptsPage() {
 
         {/* Module 3 */}
         <div className="card" style={{ marginBottom: 0 }}>
-          <h3 className="card-title" style={{ fontSize: '0.98rem', color: '#0284c7' }}>
-            Module 3: Relations & Reachability
+          <h3 className="card-title" style={{ fontSize: '0.98rem', color: 'var(--primary)' }}>
+            Module 3: Relations &amp; Reachability
           </h3>
-          <div style={{ fontSize: '0.83rem', color: '#475569', marginTop: '10px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <div style={{ fontSize: '0.83rem', color: 'var(--text-secondary)', marginTop: '10px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <p>
               <strong>Warshall's Algorithm:</strong> Computes the transitive closure W of the claim relation matrix M_R using dynamic programming:
             </p>
-            <div style={{ fontFamily: 'monospace', background: '#f8fafc', padding: '8px', borderRadius: '4px', border: '1px solid #e2e8f0' }}>
+            <div style={{ fontFamily: 'monospace', background: 'var(--bg-card-subtle)', padding: '8px', borderRadius: '4px', border: '1px solid var(--border-color)' }}>
               W^(k)[i][j] = W^(k-1)[i][j] ∨ (W^(k-1)[i][k] ∧ W^(k-1)[k][j])
             </div>
             <p>
@@ -167,10 +167,10 @@ export default function MathConceptsPage() {
 
         {/* Module 6 */}
         <div className="card" style={{ marginBottom: 0 }}>
-          <h3 className="card-title" style={{ fontSize: '0.98rem', color: '#0284c7' }}>
+          <h3 className="card-title" style={{ fontSize: '0.98rem', color: 'var(--primary)' }}>
             Module 6: Graph Algorithms
           </h3>
-          <div style={{ fontSize: '0.83rem', color: '#475569', marginTop: '10px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <div style={{ fontSize: '0.83rem', color: 'var(--text-secondary)', marginTop: '10px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <p>
               <strong>Graph Model:</strong> Claims and entities form an undirected bipartite/multipartite graph G = (V, E).
             </p>

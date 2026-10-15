@@ -1,4 +1,4 @@
-# ClaimGuard — An Explainable Insurance Claim Network Analyzer
+﻿# ClaimGuard â€” An Explainable Insurance Claim Network Analyzer
 
 > **Academic Context:** Second-Year B.Tech Computer Science and Business Systems (CSBS), Discrete Mathematics Project  
 > **Development Environment:** Windows 11, Antigravity IDE, Python 3.14.4, Node.js 24.15.0 / npm 11.12.1
@@ -24,7 +24,7 @@ Insurance companies examine claims using verification procedures and fraud-preve
 > **Important:** ClaimGuard is an explainable network-analysis tool, **not** an automated fraud detection engine.
 > - **Fictional Data:** All claim records, amounts, vehicle IDs, and garage names are simulated demonstration records.
 > - **No Machine Learning:** The system avoids black-box ML scoring or opaque risk probabilities. It uses deterministic, explainable mathematical algorithms.
-> - **Structural Links ≠ Fraud:** A shared garage, shared vehicle, or multi-claim customer indicates a relationship for human investigation, never proof of wrongdoing.
+> - **Structural Links â‰  Fraud:** A shared garage, shared vehicle, or multi-claim customer indicates a relationship for human investigation, never proof of wrongdoing.
 > - **Human Verification Required:** Possible duplicate alerts are candidates produced by formal logic rules for human reviewers to investigate.
 
 ---
@@ -35,8 +35,8 @@ Insurance companies examine claims using verification procedures and fraud-preve
   - React 19 + Vite
   - JavaScript (ES Modules)
   - Cytoscape.js (`cytoscape` & `react-cytoscapejs`) for interactive graph visualization
-  - Lucide React (`lucide-react`) for icons
-  - Custom fintech CSS design system (Dark navy sidebar, light grey workspace, white cards, restrained burgundy alert accents)
+  - Lucide React (`lucide-react`) for icons and the Light/Dark theme toggle (Sun/Moon)
+  - Custom fintech CSS design system: CSS custom properties (`--var`) with `[data-theme="light"]` / `[data-theme="dark"]` token sets; dark mode uses dark navy/charcoal backgrounds; preference persisted in `localStorage` key `claimguard_theme` (defaults to `light`)
 - **Backend:**
   - Python 3.14
   - Flask 3.1 & Flask-CORS
@@ -92,43 +92,43 @@ If $W[i][j] = 1$ while $M_R[i][j] = 0$, claims $i$ and $j$ are **indirectly conn
 
 ```
 ClaimGuard/
-├── backend/
-│   ├── venv/                       # Python virtual environment
-│   ├── app.py                      # Flask REST API application
-│   ├── data.py                     # Fictional claim records & in-memory store
-│   ├── graph_algorithms.py         # BFS, DFS, Components, Path, Relation Matrix, Warshall
-│   ├── duplicate_rules.py          # Propositional logic duplicate checker
-│   ├── requirements.txt            # Flask & Flask-CORS dependencies
-│   └── tests/
-│       ├── test_graph_algorithms.py# Unit tests for graph algorithms & Warshall
-│       ├── test_duplicate_rules.py # Unit tests for propositional logic rule
-│       └── test_api.py             # REST API integration tests
-├── frontend/
-│   ├── dist/                       # Production build output
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── Sidebar.jsx         # Dark navy navigation sidebar
-│   │   │   ├── Header.jsx          # Header with backend status & reset button
-│   │   │   ├── MetricCard.jsx      # Fintech summary metric card
-│   │   │   ├── StatusBadge.jsx     # Pending / Reviewed / Resolved badges
-│   │   │   ├── ClaimDetailModal.jsx# Inspection modal dialog & status updater
-│   │   │   └── NetworkGraph.jsx    # Cytoscape.js interactive graph component
-│   │   ├── pages/
-│   │   │   ├── OverviewPage.jsx    # Metrics dashboard & recent claims
-│   │   │   ├── ClaimsPage.jsx      # Searchable, filterable claims table & CSV export
-│   │   │   ├── DuplicateCheckerPage.jsx # Transparent duplicate alerts & custom pair inspector
-│   │   │   ├── ReviewQueuePage.jsx # Human reviewer workflow queue
-│   │   │   ├── RelationsPage.jsx   # M_R Matrix & Warshall reachability matrix
-│   │   │   └── MathConceptsPage.jsx# Discrete mathematics curriculum mapping
-│   │   ├── services/
-│   │   │   └── api.js              # Centralized backend API client
-│   │   ├── App.jsx                 # Application root & state coordination
-│   │   ├── main.jsx                # React DOM root entry
-│   │   └── index.css               # Design system & styles
-│   ├── package.json
-│   └── vite.config.js
-├── .gitignore
-└── README.md
+â”œâ”€â”€ backend/
+â”‚   â”œâ”€â”€ venv/                       # Python virtual environment
+â”‚   â”œâ”€â”€ app.py                      # Flask REST API application
+â”‚   â”œâ”€â”€ data.py                     # Fictional claim records & in-memory store
+â”‚   â”œâ”€â”€ graph_algorithms.py         # BFS, DFS, Components, Path, Relation Matrix, Warshall
+â”‚   â”œâ”€â”€ duplicate_rules.py          # Propositional logic duplicate checker
+â”‚   â”œâ”€â”€ requirements.txt            # Flask & Flask-CORS dependencies
+â”‚   â””â”€â”€ tests/
+â”‚       â”œâ”€â”€ test_graph_algorithms.py# Unit tests for graph algorithms & Warshall
+â”‚       â”œâ”€â”€ test_duplicate_rules.py # Unit tests for propositional logic rule
+â”‚       â””â”€â”€ test_api.py             # REST API integration tests
+â”œâ”€â”€ frontend/
+â”‚   â”œâ”€â”€ dist/                       # Production build output
+â”‚   â”œâ”€â”€ src/
+â”‚   â”‚   â”œâ”€â”€ components/
+â”‚   â”‚   â”‚   â”œâ”€â”€ Sidebar.jsx         # Dark navy navigation sidebar
+¦   ¦   ¦   +-- Header.jsx          # Header with backend status, reset button & Light/Dark theme toggle
+â”‚   â”‚   â”‚   â”œâ”€â”€ MetricCard.jsx      # Fintech summary metric card
+â”‚   â”‚   â”‚   â”œâ”€â”€ StatusBadge.jsx     # Pending / Reviewed / Resolved badges
+â”‚   â”‚   â”‚   â”œâ”€â”€ ClaimDetailModal.jsx# Inspection modal dialog & status updater
+â”‚   â”‚   â”‚   â””â”€â”€ NetworkGraph.jsx    # Cytoscape.js interactive graph component
+â”‚   â”‚   â”œâ”€â”€ pages/
+â”‚   â”‚   â”‚   â”œâ”€â”€ OverviewPage.jsx    # Metrics dashboard & recent claims
+â”‚   â”‚   â”‚   â”œâ”€â”€ ClaimsPage.jsx      # Searchable, filterable claims table & CSV export
+â”‚   â”‚   â”‚   â”œâ”€â”€ DuplicateCheckerPage.jsx # Transparent duplicate alerts & custom pair inspector
+â”‚   â”‚   â”‚   â”œâ”€â”€ ReviewQueuePage.jsx # Human reviewer workflow queue
+â”‚   â”‚   â”‚   â”œâ”€â”€ RelationsPage.jsx   # M_R Matrix & Warshall reachability matrix
+â”‚   â”‚   â”‚   â””â”€â”€ MathConceptsPage.jsx# Discrete mathematics curriculum mapping
+â”‚   â”‚   â”œâ”€â”€ services/
+â”‚   â”‚   â”‚   â””â”€â”€ api.js              # Centralized backend API client
+â”‚   â”‚   â”œâ”€â”€ App.jsx                 # Application root & state coordination
+â”‚   â”‚   â”œâ”€â”€ main.jsx                # React DOM root entry
+â”‚   â”‚   â””â”€â”€ index.css               # Design system & styles
+â”‚   â”œâ”€â”€ package.json
+â”‚   â””â”€â”€ vite.config.js
+â”œâ”€â”€ .gitignore
+â””â”€â”€ README.md
 ```
 
 ---
@@ -210,9 +210,9 @@ cd "c:\Users\Prathamesh Samel\ClaimGuard\backend"
 .\venv\Scripts\python.exe -m unittest discover -s tests -p "test_*.py" -v
 ```
 **Test Results:**
-- `test_graph_algorithms.py`: 8 tests (BFS, DFS, Isolated nodes, Components, Invalid nodes, Paths, Disconnected pairs, Warshall manual calculation) — **ALL PASSED**.
-- `test_duplicate_rules.py`: 6 tests (Matching condition, Differing condition, Different invoice, Self-comparison exclusion, Duplicate pair symmetry, Missing values) — **ALL PASSED**.
-- `test_api.py`: 8 tests (Health check, Claims endpoint, Graph endpoint, Duplicates, 404 on invalid ID, Valid PATCH status update, Invalid status rejection, Matrix endpoints) — **ALL PASSED**.
+- `test_graph_algorithms.py`: 8 tests (BFS, DFS, Isolated nodes, Components, Invalid nodes, Paths, Disconnected pairs, Warshall manual calculation) â€” **ALL PASSED**.
+- `test_duplicate_rules.py`: 6 tests (Matching condition, Differing condition, Different invoice, Self-comparison exclusion, Duplicate pair symmetry, Missing values) â€” **ALL PASSED**.
+- `test_api.py`: 8 tests (Health check, Claims endpoint, Graph endpoint, Duplicates, 404 on invalid ID, Valid PATCH status update, Invalid status rejection, Matrix endpoints) â€” **ALL PASSED**.
 
 ### B. Frontend Production Build Verification
 ```powershell
@@ -249,4 +249,140 @@ Builds the production distribution package with zero errors.
 
 1. **In-Memory Session Storage:** Review status updates are kept in backend memory and reset upon server restart. (A persistent database like SQLite or PostgreSQL can be added for persistent storage).
 2. **Simplified Duplicate Rule:** The propositional logic rule $D(A, B) = I \land V \land B$ is illustrative for discrete mathematics demonstration, not an exhaustive insurance industry duplicate rule.
-3. **Graph Scale:** The graph is optimized for interactive relationship analysis of small-to-medium networks (10–1000 nodes) in Cytoscape.js.
+3. **Graph Scale:** The graph is optimized for interactive relationship analysis of small-to-medium networks (10â€“1000 nodes) in Cytoscape.js.
+
+---
+
+
+---
+
+## 12. Vercel Deployment Guide (Services Architecture)
+
+### How it works
+
+ClaimGuard uses Vercel **services** — one project, two independently built services, one public domain:
+
+| Service | Root | Framework | Public? |
+|---|---|---|---|
+| `backend` | `backend/` | Flask | Via `/api/(.*)` rewrite only |
+| `frontend` | `frontend/` | Vite | Via `/(.*)` catch-all rewrite |
+
+Vercel routes all `/api/*` requests to the Flask service and everything else to the React build.
+Both are served from **the same domain** (`https://<project>.vercel.app`), so all browser API calls are same-origin — no CORS preflight is ever triggered in production.
+
+No inter-service bindings are needed because the frontend uses relative `/api` paths baked in at build time — it never needs to know the Flask service's internal URL.
+
+> **In-memory state disclosure:** Review status changes (`PATCH /api/claims/<id>/status`) are held in the Flask process's memory only. In Vercel's serverless model, each invocation may run in a separate process. **Status changes do not persist reliably across requests.** Every cold start reloads the original synthetic dataset from `data.py`. The "Reset Data" button resets state within the current warm invocation. This is intentional for an educational demonstration; add a database (e.g. SQLite, Postgres) to make state durable.
+
+---
+
+### Step 1 — Push to GitHub
+
+```powershell
+cd "C:\Users\Prathamesh Samel\ClaimGuard"
+git init            # skip if already a repo
+git add .
+git commit -m "chore: configure Vercel services deployment"
+git remote add origin https://github.com/<YOUR_USERNAME>/ClaimGuard.git
+git push -u origin main
+```
+
+---
+
+### Step 2 — Import into Vercel
+
+1. Go to [vercel.com](https://vercel.com) → **Add New Project** → import your repository.
+2. Vercel detects `vercel.json` automatically. No manual build settings needed.
+3. Click **Deploy**.
+
+---
+
+### Step 3 — Environment Variables
+
+No environment variables are required for the default deployment.
+
+**Optional — direct Flask access for development/testing only:**
+
+| Variable | Set where | Value | Purpose |
+|---|---|---|---|
+| `ALLOWED_ORIGINS` | Local shell only | `http://localhost:5173` | Extra CORS origins for direct Flask access (not needed via Vite proxy or in production) |
+
+Do **not** set `ALLOWED_ORIGINS` or `VITE_API_BASE_URL` in the Vercel dashboard.
+
+---
+
+### Step 4 — Verify after deployment
+
+Test the health endpoint first:
+```
+GET https://<project>.vercel.app/api/health
+```
+Expected response:
+```json
+{"status": "healthy", "service": "ClaimGuard API", "claims_loaded": 14, "version": "1.0.0"}
+```
+
+Then test the full API surface:
+```
+GET  /api/stats
+GET  /api/claims
+GET  /api/claims/CLM-201
+GET  /api/graph
+GET  /api/graph/components
+GET  /api/graph/bfs/CLM-201
+GET  /api/graph/dfs/CLM-201
+GET  /api/graph/path?source=CLM-201&target=CLM-203
+GET  /api/relations/matrix
+GET  /api/relations/reachability
+GET  /api/duplicates
+POST /api/duplicates/evaluate   body: {"claim_a":"CLM-204","claim_b":"CLM-205"}
+PATCH /api/claims/CLM-201/status  body: {"status":"Reviewed"}
+```
+
+---
+
+### Local Development (unchanged)
+
+**Terminal 1 — Backend:**
+```powershell
+cd "C:\Users\Prathamesh Samel\ClaimGuard\backend"
+.\venv\Scripts\python.exe app.py
+# API runs at http://127.0.0.1:5000
+```
+
+**Terminal 2 — Frontend:**
+```powershell
+cd "C:\Users\Prathamesh Samel\ClaimGuard\frontend"
+npm.cmd run dev
+# App runs at http://localhost:5173
+# Vite proxy forwards /api/* to http://127.0.0.1:5000
+```
+
+No environment variables needed locally.
+
+---
+
+### CORS
+
+CORS is configured in `backend/app.py` via the `ALLOWED_ORIGINS` environment variable.
+
+| Context | CORS triggered? | Why |
+|---|---|---|
+| Production (Vercel) | No | Same-origin: browser calls `https://app.vercel.app/api/*`, which Vercel rewrites internally |
+| Local dev (Vite proxy) | No | Vite proxy makes `/api/*` same-origin from the browser's perspective |
+| Direct Flask access (`localhost:5000`) | Yes | Different origin — `ALLOWED_ORIGINS` default `http://localhost:5173` allows it |
+
+Default allowed origin: `http://localhost:5173`. Override with `ALLOWED_ORIGINS=origin1,origin2` in your local shell if needed.
+
+---
+
+### Files changed for this deployment
+
+| File | Action | Reason |
+|---|---|---|
+| `vercel.json` | **Rewritten** | Migrated from legacy `builds`+`routes` format to `services`+`rewrites` format |
+| `api/index.py` | **Deleted** | Was a shim for the old single-function format; not used by services |
+| `api/requirements.txt` | **Deleted** | Was paired with the deleted shim |
+| `api/` directory | **Deleted** | Removed after both files were removed (was empty) |
+| `backend/app.py` | **Updated** | Replaced `"*"` wildcard CORS with env-var-driven narrow origin list |
+| `frontend/vite.config.js` | **Updated** | Updated proxy comment; no functional change |

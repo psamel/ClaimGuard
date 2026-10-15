@@ -63,28 +63,28 @@ export default function DuplicateCheckerPage({
             <Scale size={18} /> Propositional Logic Formulation (Discrete Mathematics Module 1)
           </h2>
         </div>
-        <div style={{ fontSize: '0.88rem', color: '#475569' }}>
+        <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
           <p style={{ marginBottom: '10px' }}>
             For any two distinct claims A and B (A ≠ B), we evaluate three atomic truth conditions:
           </p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '12px', marginBottom: '14px' }}>
-            <div style={{ background: '#f8fafc', padding: '10px 14px', borderRadius: '6px', border: '1px solid #e2e8f0' }}>
+            <div style={{ background: 'var(--bg-card-subtle)', padding: '10px 14px', borderRadius: '6px', border: '1px solid var(--border-color)' }}>
               <strong>Condition I(A, B):</strong> Same Incident Identifier
-              <div style={{ fontSize: '0.78rem', color: '#64748b', marginTop: '2px' }}>
+              <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '2px' }}>
                 I(A, B) ⇔ A.incident_id = B.incident_id ∧ A.incident_id ≠ ∅
               </div>
             </div>
 
-            <div style={{ background: '#f8fafc', padding: '10px 14px', borderRadius: '6px', border: '1px solid #e2e8f0' }}>
+            <div style={{ background: 'var(--bg-card-subtle)', padding: '10px 14px', borderRadius: '6px', border: '1px solid var(--border-color)' }}>
               <strong>Condition V(A, B):</strong> Same Vehicle Identifier
-              <div style={{ fontSize: '0.78rem', color: '#64748b', marginTop: '2px' }}>
+              <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '2px' }}>
                 V(A, B) ⇔ A.vehicle_id = B.vehicle_id ∧ A.vehicle_id ≠ ∅
               </div>
             </div>
 
-            <div style={{ background: '#f8fafc', padding: '10px 14px', borderRadius: '6px', border: '1px solid #e2e8f0' }}>
+            <div style={{ background: 'var(--bg-card-subtle)', padding: '10px 14px', borderRadius: '6px', border: '1px solid var(--border-color)' }}>
               <strong>Condition B(A, B):</strong> Same Invoice Identifier
-              <div style={{ fontSize: '0.78rem', color: '#64748b', marginTop: '2px' }}>
+              <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '2px' }}>
                 B(A, B) ⇔ A.invoice_id = B.invoice_id ∧ A.invoice_id ≠ ∅
               </div>
             </div>
@@ -92,10 +92,10 @@ export default function DuplicateCheckerPage({
 
           <div style={{ 
             padding: '12px 16px', 
-            background: '#fef2f2', 
+            background: 'var(--accent-burgundy-light)', 
             borderRadius: '6px', 
-            border: '1px solid #fecaca',
-            color: '#991b1b',
+            border: '1px solid var(--accent-burgundy-border)',
+            color: 'var(--accent-burgundy-text)',
             fontWeight: 600,
             display: 'flex',
             alignItems: 'center',
@@ -132,9 +132,9 @@ export default function DuplicateCheckerPage({
               <div 
                 key={`${cand.claim_a_id}_${cand.claim_b_id}`}
                 style={{
-                  border: '1px solid #fecaca',
+                  border: '1px solid var(--accent-burgundy-border)',
                   borderRadius: '8px',
-                  background: '#fffbfb',
+                  background: 'var(--bg-card-subtle)',
                   padding: '20px',
                 }}
               >
@@ -169,7 +169,7 @@ export default function DuplicateCheckerPage({
 
                 {/* Side by side claims summary */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
-                  <div style={{ background: '#ffffff', padding: '14px', borderRadius: '6px', border: '1px solid #e2e8f0' }}>
+                  <div style={{ background: 'var(--bg-card)', padding: '14px', borderRadius: '6px', border: '1px solid var(--border-color)' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
                       <strong style={{ color: '#0284c7' }}>Claim A: {cand.claim_a_id}</strong>
                       <StatusBadge status={cand.claims_summary?.claim_a?.review_status} />
@@ -200,7 +200,7 @@ export default function DuplicateCheckerPage({
                     </div>
                   </div>
 
-                  <div style={{ background: '#ffffff', padding: '14px', borderRadius: '6px', border: '1px solid #e2e8f0' }}>
+                  <div style={{ background: 'var(--bg-card)', padding: '14px', borderRadius: '6px', border: '1px solid var(--border-color)' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
                       <strong style={{ color: '#0284c7' }}>Claim B: {cand.claim_b_id}</strong>
                       <StatusBadge status={cand.claims_summary?.claim_b?.review_status} />
@@ -234,7 +234,7 @@ export default function DuplicateCheckerPage({
 
                 {/* Logic conditions table */}
                 <div className="table-responsive" style={{ marginBottom: '14px' }}>
-                  <table className="custom-table" style={{ background: '#ffffff' }}>
+                  <table className="custom-table" style={{ background: 'var(--bg-card)' }}>
                     <thead>
                       <tr>
                         <th>Rule Condition</th>
@@ -250,32 +250,32 @@ export default function DuplicateCheckerPage({
                         <td><code>{cand.fields?.incident?.a}</code></td>
                         <td><code>{cand.fields?.incident?.b}</code></td>
                         <td>Identical Identifier</td>
-                        <td style={{ color: '#059669', fontWeight: 700 }}>TRUE (1)</td>
+                        <td style={{ color: 'var(--success)', fontWeight: 700 }}>TRUE (1)</td>
                       </tr>
                       <tr>
                         <td><strong>V(A,B) — Vehicle Match</strong></td>
                         <td><code>{cand.fields?.vehicle?.a}</code></td>
                         <td><code>{cand.fields?.vehicle?.b}</code></td>
                         <td>Identical Identifier</td>
-                        <td style={{ color: '#059669', fontWeight: 700 }}>TRUE (1)</td>
+                        <td style={{ color: 'var(--success)', fontWeight: 700 }}>TRUE (1)</td>
                       </tr>
                       <tr>
                         <td><strong>B(A,B) — Invoice Match</strong></td>
                         <td><code>{cand.fields?.invoice?.a}</code></td>
                         <td><code>{cand.fields?.invoice?.b}</code></td>
                         <td>Identical Identifier</td>
-                        <td style={{ color: '#059669', fontWeight: 700 }}>TRUE (1)</td>
+                        <td style={{ color: 'var(--success)', fontWeight: 700 }}>TRUE (1)</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
 
                 <div style={{ 
-                  background: '#f1f5f9', 
+                  background: 'var(--bg-card-subtle)', 
                   padding: '12px 14px', 
                   borderRadius: '6px', 
                   fontSize: '0.84rem', 
-                  color: '#334155' 
+                  color: 'var(--text-main)' 
                 }}>
                   <strong>Mathematical Explanation:</strong> {cand.explanation}
                 </div>
@@ -338,8 +338,8 @@ export default function DuplicateCheckerPage({
 
         {evalResult && (
           <div style={{ 
-            background: evalResult.is_duplicate_candidate ? '#fffbfb' : '#f8fafc', 
-            border: `1px solid ${evalResult.is_duplicate_candidate ? '#fecaca' : '#e2e8f0'}`,
+            background: evalResult.is_duplicate_candidate ? 'var(--accent-burgundy-light)' : 'var(--bg-card-subtle)', 
+            border: `1px solid ${evalResult.is_duplicate_candidate ? 'var(--accent-burgundy-border)' : 'var(--border-color)'}`,
             borderRadius: '8px', 
             padding: '18px' 
           }}>
@@ -352,8 +352,9 @@ export default function DuplicateCheckerPage({
                 borderRadius: '12px', 
                 fontSize: '0.8rem', 
                 fontWeight: 700,
-                backgroundColor: evalResult.is_duplicate_candidate ? '#fee2e2' : '#f1f5f9',
-                color: evalResult.is_duplicate_candidate ? '#991b1b' : '#475569'
+                backgroundColor: evalResult.is_duplicate_candidate ? 'var(--accent-burgundy-light)' : 'var(--bg-card-subtle)',
+                color: evalResult.is_duplicate_candidate ? 'var(--accent-burgundy-text)' : 'var(--text-secondary)',
+                border: `1px solid ${evalResult.is_duplicate_candidate ? 'var(--accent-burgundy-border)' : 'var(--border-color)'}`
               }}>
                 D({evalResult.claim_a_id}, {evalResult.claim_b_id}) = {evalResult.is_duplicate_candidate ? 'TRUE' : 'FALSE'}
               </span>
@@ -361,30 +362,30 @@ export default function DuplicateCheckerPage({
 
             {evalResult.truth_values && (
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', marginBottom: '14px' }}>
-                <div style={{ padding: '8px', background: '#ffffff', borderRadius: '4px', border: '1px solid #e2e8f0', fontSize: '0.8rem' }}>
+                <div style={{ padding: '8px', background: 'var(--bg-card)', borderRadius: '4px', border: '1px solid var(--border-color)', fontSize: '0.8rem' }}>
                   <div>I(A,B) (Incident): <strong>{evalResult.truth_values.I ? 'TRUE' : 'FALSE'}</strong></div>
-                  <div style={{ fontSize: '0.72rem', color: '#64748b' }}>
+                  <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
                     {evalResult.fields?.incident?.a} vs {evalResult.fields?.incident?.b}
                   </div>
                 </div>
 
-                <div style={{ padding: '8px', background: '#ffffff', borderRadius: '4px', border: '1px solid #e2e8f0', fontSize: '0.8rem' }}>
+                <div style={{ padding: '8px', background: 'var(--bg-card)', borderRadius: '4px', border: '1px solid var(--border-color)', fontSize: '0.8rem' }}>
                   <div>V(A,B) (Vehicle): <strong>{evalResult.truth_values.V ? 'TRUE' : 'FALSE'}</strong></div>
-                  <div style={{ fontSize: '0.72rem', color: '#64748b' }}>
+                  <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
                     {evalResult.fields?.vehicle?.a} vs {evalResult.fields?.vehicle?.b}
                   </div>
                 </div>
 
-                <div style={{ padding: '8px', background: '#ffffff', borderRadius: '4px', border: '1px solid #e2e8f0', fontSize: '0.8rem' }}>
+                <div style={{ padding: '8px', background: 'var(--bg-card)', borderRadius: '4px', border: '1px solid var(--border-color)', fontSize: '0.8rem' }}>
                   <div>B(A,B) (Invoice): <strong>{evalResult.truth_values.B ? 'TRUE' : 'FALSE'}</strong></div>
-                  <div style={{ fontSize: '0.72rem', color: '#64748b' }}>
+                  <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
                     {evalResult.fields?.invoice?.a} vs {evalResult.fields?.invoice?.b}
                   </div>
                 </div>
               </div>
             )}
 
-            <div style={{ fontSize: '0.84rem', color: '#334155' }}>
+            <div style={{ fontSize: '0.84rem', color: 'var(--text-main)' }}>
               <strong>Result Explanation:</strong> {evalResult.explanation}
             </div>
           </div>
